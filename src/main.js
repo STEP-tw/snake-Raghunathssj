@@ -9,6 +9,9 @@ const animateSnake=function() {
   let oldHead=snake.getHead();
   let oldTail=snake.move();
   let head=snake.getHead();
+  if(snake.isHittedWall(head,numberOfRows,numberOfCols)) {
+    stopSnake();
+  }
   paintBody(oldHead);
   unpaintSnake(oldTail);
   paintHead(head);
@@ -46,12 +49,15 @@ const createSnake=function() {
   body.push(tail);
   body.push(tail.next());
   let head=tail.next().next();
-
   snake=new Snake(head,body);
 }
 
 const createFood=function(numberOfRows,numberOfCols) {
   food=generateRandomPosition(numberOfCols,numberOfRows);
+}
+
+const stopSnake = function(){
+  clearInterval(animator);
 }
 
 const startGame=function() {
