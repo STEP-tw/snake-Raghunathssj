@@ -9,12 +9,13 @@ const animateSnake=function() {
   let oldHead=snake.getHead();
   let oldTail=snake.move();
   let head=snake.getHead();
-  if(snake.isHittedWall(head,numberOfRows,numberOfCols)) {
-    stopGame();
-  }
   paintBody(oldHead);
   unpaintSnake(oldTail);
   paintHead(head);
+  if(snake.isEattenItself()) {
+    stopGame();
+    return;
+  }
   if(head.isSameCoordAs(food)) {
     snake.grow();
     createFood(numberOfRows,numberOfCols);

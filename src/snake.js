@@ -24,7 +24,10 @@ Snake.prototype={
   turnRight:function() {
     this.head=this.head.turnRight();
   },
-  isHittedWall: function(head,maxRows,maxCols) {
-    return head.x==0 || head.y==0 || head.x == maxCols-1 || head.y == maxRows-1;
+  isEattenItself: function(){
+    let head = this.head;
+     return this.body.some(bodyPosition => {
+      return head.isSameCoordAs(bodyPosition);
+    });
   }
 }
