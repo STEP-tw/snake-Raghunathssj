@@ -29,5 +29,8 @@ Snake.prototype={
      return this.body.some(bodyPosition => {
       return head.isSameCoordAs(bodyPosition);
     });
+  },
+   isCollidedWithWall: function(maxRows,maxCols) {
+    return this.head.isCollidedWithWall(maxRows,maxCols);
   }
 }

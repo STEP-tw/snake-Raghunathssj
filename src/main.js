@@ -9,6 +9,10 @@ const animateSnake=function() {
   let oldHead=snake.getHead();
   let oldTail=snake.move();
   let head=snake.getHead();
+  if(snake.isCollidedWithWall(numberOfRows,numberOfCols)) {
+    stopGame();
+    return;
+  }
   paintBody(oldHead);
   unpaintSnake(oldTail);
   paintHead(head);

@@ -43,6 +43,12 @@ Position.prototype.getCoord=function() {
   return [this.x,this.y];
 }
 
+Position.prototype.isCollidedWithWall = function (maxRows,maxCols) {
+  let case1 = this.x >= 0 && this.x < maxCols;
+  let case2 = this.y >= 0 && this.y < maxRows;
+  return !(case1 && case2);
+};
+
 const generateRandomPosition=function(maxX,maxY) {
   let x=generateRandomNumberBetween(0,maxX);
   let y=generateRandomNumberBetween(0,maxY);
